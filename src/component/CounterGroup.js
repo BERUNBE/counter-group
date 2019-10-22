@@ -11,13 +11,11 @@ class CounterGroup extends Component {
   }
 
   regenrateCounters = () => {
-    if (parseInt(this.refs.countInput.value) > 0) {
-      const changedArr = new Array(parseInt(this.refs.countInput.value))
-        .fill(0)
-        .map(() => ({ count: 0, id: new Date().getTime() + Math.random() }));
+    const arraySize = parseInt(this.refs.countInput.value);
+    if (arraySize > 0) {
       this.props.dispatch({
         type: "UPDATEARRAY",
-        payload: changedArr
+        payload: arraySize
       });
       this.props.dispatch({
         type: "RESETSUM"

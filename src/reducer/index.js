@@ -14,7 +14,10 @@ export default (state = initialState, { type, payload }) => {
     case "RESETSUM":
       return { counterSum: 0, counterArr: state.counterArr};
     case "UPDATEARRAY":
-      return { counterSum: state.counterSum, counterArr: payload};
+      const updatedArray = new Array(payload)
+        .fill(0)
+        .map(() => ({ count: 0, id: new Date().getTime() + Math.random() }));
+      return { counterSum: state.counterSum, counterArr: updatedArray};
     case "INCREMENT":
       const incrementedArray = state.counterArr.map(counterItem => {
         if (counterItem.id === payload.id) {
