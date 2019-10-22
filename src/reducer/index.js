@@ -13,7 +13,7 @@ export default (state = initialState, { type, payload }) => {
       return { counterSum: state.counterSum + payload, counterArr: state.counterArr};
     case "RESETSUM":
       return { counterSum: 0, counterArr: state.counterArr};
-    case "COUNTERARRAY":
+    case "UPDATEARRAY":
       return { counterSum: state.counterSum, counterArr: payload};
     default:
       return state;

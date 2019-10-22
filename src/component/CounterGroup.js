@@ -16,7 +16,7 @@ class CounterGroup extends Component {
         .fill(0)
         .map(() => ({ count: 0, id: new Date().getTime() + Math.random() }));
       this.props.dispatch({
-        type: "COUNTERARRAY",
+        type: "UPDATEARRAY",
         payload: changedArr
       });
       this.props.dispatch({
@@ -42,7 +42,7 @@ class CounterGroup extends Component {
     });
 
     this.props.dispatch({
-      type: "COUNTERARRAY",
+      type: "UPDATEARRAY",
       payload: changedArr
     });
   };
@@ -57,7 +57,7 @@ class CounterGroup extends Component {
     });
 
     this.props.dispatch({
-      type: "COUNTERARRAY",
+      type: "UPDATEARRAY",
       payload: changedArr
     });
   };
