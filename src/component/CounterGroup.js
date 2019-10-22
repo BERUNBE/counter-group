@@ -27,38 +27,22 @@ class CounterGroup extends Component {
 
   counterUpdateCallback = changedNum => {
     this.props.dispatch({ //this dispatch will wuto inject by connect() method
-      type: "COUNTERSUM",
+      type: "CALCULATESUM",
       payload: changedNum
     }); //{type: "", payload: xxx} named action, it will bo translated to ./reducer
   };
 
   increaseNumber = (changedNum, id) => {
-    const changedArr = this.props.counterArr.map(counterItem => {
-      if (counterItem.id === id) {
-        return { id: id, count: counterItem.count + changedNum };
-      } else {
-        return counterItem;
-      }
-    });
-
     this.props.dispatch({
-      type: "UPDATEARRAY",
-      payload: changedArr
+      type: "INCREMENT",
+      payload: {changedNum, id}
     });
   };
 
   decreaseNumber = (changedNum, id) => {
-    const changedArr = this.props.counterArr.map(counterItem => {
-      if (counterItem.id === id) {
-        return { id: id, count: counterItem.count - changedNum };
-      } else {
-        return counterItem;
-      }
-    });
-
     this.props.dispatch({
-      type: "UPDATEARRAY",
-      payload: changedArr
+      type: "DECREMENT",
+      payload: {changedNum, id}
     });
   };
 

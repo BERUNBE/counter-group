@@ -8,13 +8,39 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case "COUNTERSUM":
+    case "CALCULATESUM":
       console.log(payload)
       return { counterSum: state.counterSum + payload, counterArr: state.counterArr};
     case "RESETSUM":
       return { counterSum: 0, counterArr: state.counterArr};
     case "UPDATEARRAY":
       return { counterSum: state.counterSum, counterArr: payload};
+    case "INCREMENT":
+      const incrementedArray = state.counterArr.map(counterItem => {
+        if (counterItem.id === payload.id) {
+          return { id: payload.id, 
+                    count: counterItem.count + parseInt(payload.changedNum) };
+        } else {
+          return counterItem;
+        }
+      });
+      return {
+        counterSum: state.counterSum,
+        counterArr: incrementedArray
+      }
+    case "DECREMENT":
+      const decrementedArray = state.counterArr.map(counterItem => {
+        if (counterItem.id === payload.id) {
+          return { id: payload.id, 
+                    count: counterItem.count - parseInt(payload.changedNum) };
+          } else {
+            return counterItem;
+          }
+       });
+      return {
+        counterSum: state.counterSum,
+        counterArr: decrementedArray
+      }
     default:
       return state;
   }
