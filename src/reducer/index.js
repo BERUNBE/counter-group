@@ -9,7 +9,6 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case "CALCULATESUM":
-      console.log(payload)
       return { counterSum: state.counterSum + payload, counterArr: state.counterArr};
     case "RESETSUM":
       return { counterSum: 0, counterArr: state.counterArr};
